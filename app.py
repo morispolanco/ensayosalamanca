@@ -15,7 +15,7 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados."
+        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados. Incluye citas textuales, cin referencia."
     )
 
     # Crear el mensaje para el modelo
