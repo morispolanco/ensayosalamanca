@@ -15,7 +15,7 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Utilizando las citas proporcionadas, redacta una entrada enciclopédica que conste de al menos 9 párrafos. Tu entrada debe proporcionar información detallada sobre el tema, abarcando diversos aspectos relevantes y ofreciendo una presentación coherente y completa. Cada párrafo deberá desarrollar un aspecto específico, como antecedentes históricos, características principales, impacto en la sociedad, opiniones de expertos, o cualquier otro aspecto relevante que pueda extraerse de las citas. Tu redacción debe ser clara, concisa y precisa, proporcionando una visión completa del tema a partir de las citas proporcionadas, y fomentando la creatividad en la presentación de la información."
+        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados."
     )
 
     # Crear el mensaje para el modelo
