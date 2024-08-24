@@ -54,7 +54,7 @@ def generate_essay(citations):
         st.error(f"Error: {response_json.get('error', 'Unknown error')}")
         return
 
-st.title("Generador de Ensayo Académico")
+st.title("Generador de entrada de diccionario")
 st.write(
     """
     Introduce las citas que deseas incluir en el ensayo. Cada cita deberá estar en una nueva línea.
@@ -62,13 +62,13 @@ st.write(
 )
 
 citations_input = st.text_area("Citas", height=200)
-if st.button("Generar Ensayo"):
+if st.button("Generar entrada"):
     citations = [citation.strip() for citation in citations_input.split("\n") if citation.strip()]
     if citations:
-        with st.spinner("Generando ensayo..."):
+        with st.spinner("Generando entrada..."):
             essay = generate_essay(citations)
             if essay:
-                st.subheader("Ensayo Generado")
+                st.subheader("Entrada generada")
                 st.write(essay)
     else:
         st.error("Por favor, introduce algunas citas.")
