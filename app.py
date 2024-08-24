@@ -24,9 +24,9 @@ def generate_essay(citations):
         messages.append({"role": "user", "content": f"Cita: {citation}"})
 
     data = {
-        "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
         "messages": messages,
-        "max_tokens": 2048,  # Incrementar el número de tokens para permitir una discusión más larga
+        "max_tokens": 3048,  # Incrementar el número de tokens para permitir una discusión más larga
         "temperature": 0.5,
         "top_p": 0.7,
         "top_k": 50,
