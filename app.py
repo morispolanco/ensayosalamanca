@@ -15,9 +15,10 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Escribe un ensayo académico largo y detallado que utilice las siguientes citas como "
-        "referencias. Asegúrate de analizar, discutir y conectar las ideas presentadas en las "
-        "citas, proporcionando tu propia interpretación y contexto."
+        "Using the citations provided, write an encyclopedia entry in Spanish that accurately and thoroughly describes the topic at hand. Make sure to use objective and descriptive language, presenting the information in a concise and coherent manner."
+"Please include relevant details related to the topic of the quotes provided, presenting a complete and accurate overview of the topic. Your writing should be clear and easy to understand, providing relevant and meaningful information based on the citations provided."
+"Keep in mind that the wording should be flexible enough to allow for a creative and original description of the topic, while maintaining a focus on the accuracy and completeness of the information presented."
+
     )
 
     # Crear el mensaje para el modelo
