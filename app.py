@@ -26,7 +26,7 @@ def generate_essay(citations):
     data = {
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
-        "max_tokens": 3048,  # Incrementar el número de tokens para permitir una discusión más larga
+        "max_tokens": 2048,  # Incrementar el número de tokens para permitir una discusión más larga
         "temperature": 0.7,
         "top_p": 0.7,
         "top_k": 50,
@@ -58,29 +58,36 @@ st.write(
     """
 )
 
-citations_input = st.text_area("Citas", height=200)
+# Define los estados iniciales si no están presentes
+if "citations_input" not in st.session_state:
+    st.session_state.citations_input = ""
+if "essay" not in st.session_state:
+    st.session_state.essay = ""
+
+citations_input = st.text_area("Citas", height=200, key="citations_input")
 
 if st.button("Generar entrada"):
-    citations = [citation.strip() for citation in citations_input.split("\n") if citation.strip()]
+    citations = [citation.strip() for citation in st.session_state.citations_input.split("\n") if citation.strip()]
     if citations:
         with st.spinner("Generando entrada..."):
             essay = generate_essay(citations)
             if essay:
-                st.subheader("Entrada generada")
-                st.write(essay)
                 st.session_state.essay = essay
     else:
         st.error("Por favor, introduce algunas citas.")
 
 if st.button("Borrar"):
-    st.session_state.essay = ""
     st.session_state.citations_input = ""
-    st.experimental_rerun()
+    st.session_state.essay = ""
 
-if "essay" in st.session_state and st.session_state.essay:
+# Mostrar el ensayo generado, si está presente
+if st.session_state.essay:
+    st.subheader("Entrada generada")
+    st.write(st.session_state.essay)
+
     st.download_button(
         label="Copiar entrada",
         data=st.session_state.essay,
         file_name="entrada_generada.txt",
-        mime="text/plain",
+        mime="text/plain"
     )
