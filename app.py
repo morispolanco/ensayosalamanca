@@ -15,9 +15,7 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Using the citations provided, write an encyclopedia entry in Spanish that accurately and thoroughly describes the topic at hand. Make sure to use objective and descriptive language, presenting the information in a concise and coherent manner."
-"Please include relevant details related to the topic of the quotes provided, presenting a complete and accurate overview of the topic. Your writing should be clear and easy to understand, providing relevant and meaningful information based on the citations provided."
-"Keep in mind that the wording should be flexible enough to allow for a creative and original description of the topic, while maintaining a focus on the accuracy and completeness of the information presented."
+        "Usando las citas proporcionadas, redacta una entrada extensa para una enciclopedia. Tu entrada debe ser detallada y abarcar los temas mencionados en las citas, ofreciendo una perspectiva amplia y precisa sobre los conceptos o eventos relacionados. Asegúrate de integrar las citas de manera coherente en el contexto de la entrada y proporcionar información adicional relevante para enriquecer la comprensión del lector sobre los temas abordados en las citas. Tu respuesta debe ser flexible y permitir la generación de una entrada única y detallada, que refleje una comprensión profunda de los temas presentados en las citas."
 
     )
 
