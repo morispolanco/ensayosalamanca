@@ -12,14 +12,21 @@ def generate_essay(citations):
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
-    messages = [{"role": "system", "content": "You are a helpful assistant that writes academic essays based on provided citations."}]
+
+    # Creamos el mensaje instrucción para el modelo
+    instruction = (
+        "Escribe un ensayo académico largo utilizando las siguientes citas como referencias:"
+    )
+
+    # Crear el mensaje para el modelo
+    messages = [{"role": "system", "content": instruction}]
     for citation in citations:
         messages.append({"role": "user", "content": citation})
 
     data = {
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
-        "max_tokens": 512,
+        "max_tokens": 1024, # Aumentamos el número de tokens para obtener un ensayo largo
         "temperature": 0.7,
         "top_p": 0.7,
         "top_k": 50,
@@ -53,7 +60,7 @@ st.write(
 
 citations_input = st.text_area("Citas", height=200)
 if st.button("Generar Ensayo"):
-    citations = citations_input.split("\n")
+    citations = [citation.strip() for citation in citations_input.split("\n") if citation.strip()]
     if citations:
         with st.spinner("Generando ensayo..."):
             essay = generate_essay(citations)
