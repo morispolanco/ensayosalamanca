@@ -24,7 +24,7 @@ def generate_essay(citations):
         messages.append({"role": "user", "content": f"Cita: {citation}"})
 
     data = {
-        "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+        "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
         "max_tokens": 3048,  # Incrementar el número de tokens para permitir una discusión más larga
         "temperature": 0.5,
@@ -32,7 +32,7 @@ def generate_essay(citations):
         "top_k": 50,
         "repetition_penalty": 1,
         "stop": ["[/INST]", "</s>"],
-        "stream": False  # Cambiar a True si se desea transmisión en tiempo real
+        "stream": True  # Cambiar a True si se desea transmisión en tiempo real
     }
 
     response = requests.post(url, headers=headers, json=data)
