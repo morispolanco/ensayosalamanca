@@ -15,7 +15,7 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados. Incluye citas textuales, cin referencia."
+        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados. Incluye citas textuales, sin referencia."
     )
 
     # Crear el mensaje para el modelo
@@ -59,6 +59,7 @@ st.write(
 )
 
 citations_input = st.text_area("Citas", height=200)
+
 if st.button("Generar entrada"):
     citations = [citation.strip() for citation in citations_input.split("\n") if citation.strip()]
     if citations:
@@ -67,5 +68,19 @@ if st.button("Generar entrada"):
             if essay:
                 st.subheader("Entrada generada")
                 st.write(essay)
+                st.session_state.essay = essay
     else:
         st.error("Por favor, introduce algunas citas.")
+
+if st.button("Borrar"):
+    st.session_state.essay = ""
+    st.session_state.citations_input = ""
+    st.experimental_rerun()
+
+if "essay" in st.session_state and st.session_state.essay:
+    st.download_button(
+        label="Copiar entrada",
+        data=st.session_state.essay,
+        file_name="entrada_generada.txt",
+        mime="text/plain",
+    )
