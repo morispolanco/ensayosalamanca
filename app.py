@@ -15,7 +15,7 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Escribe una entrada extensa y exhaustiva para una enciclopedia utilizando las citas proporcionadas. La entrada debe ofrecer una descripción detallada y completa del tema, incluyendo su historia, aplicaciones, impacto, y cualquier información relevante. Asegúrate de abordar todos los aspectos pertinentes relacionados con el tema en cuestión, proporcionando una visión amplia y precisa. Además, tu entrada debe ser flexible y permitir la inclusión de detalles creativos y relevantes que enriquezcan la comprensión del tema. Incluye las citas con su referencia."
+        "Escribe una entrada extensa y exhaustiva para una enciclopedia utilizando las citas proporcionadas. La entrada debe ofrecer una descripción detallada y completa del tema, incluyendo su historia, aplicaciones, impacto, y cualquier información relevante. Asegúrate de abordar todos los aspectos pertinentes relacionados con el tema en cuestión, proporcionando una visión amplia y precisa. Además, tu entrada debe ser flexible y permitir la inclusión de detalles creativos y relevantes que enriquezcan la comprensión del tema. Pon la obra fuente de cada paráfrasis."
     )
 
     # Crear el mensaje para el modelo
