@@ -2,9 +2,6 @@ import streamlit as st
 import requests
 import json
 
-# Almacenar la API key en los secrets de Streamlit
-st.secrets["TOGETHER_API_KEY"] = "TU_API_KEY_AQUI"
-
 # Configuración de la API de Together
 TOGETHER_API_URL = "https://api.together.xyz/v1/chat/completions"
 TOGETHER_API_KEY = st.secrets["TOGETHER_API_KEY"]
