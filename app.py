@@ -13,20 +13,22 @@ def generate_essay(citations):
         "Content-Type": "application/json"
     }
 
-    # Creamos el mensaje instrucción para el modelo
+    # Se crea la instrucción para el modelo
     instruction = (
-        "Escribe un ensayo académico largo utilizando las siguientes citas como referencias:"
+        "Escribe un ensayo académico largo y detallado que utilice las siguientes citas como "
+        "referencias. Asegúrate de analizar, discutir y conectar las ideas presentadas en las "
+        "citas, proporcionando tu propia interpretación y contexto."
     )
 
     # Crear el mensaje para el modelo
     messages = [{"role": "system", "content": instruction}]
     for citation in citations:
-        messages.append({"role": "user", "content": citation})
+        messages.append({"role": "user", "content": f"Cita: {citation}"})
 
     data = {
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
-        "max_tokens": 2024, # Aumentamos el número de tokens para obtener un ensayo largo
+        "max_tokens": 2048,  # Incrementar el número de tokens para permitir una discusión más larga
         "temperature": 0.7,
         "top_p": 0.7,
         "top_k": 50,
