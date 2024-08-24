@@ -57,7 +57,7 @@ def generate_essay(citations):
 st.title("Generador de entrada de diccionario")
 st.write(
     """
-    Introduce las citas que deseas incluir en el ensayo. Cada cita deberá estar en una nueva línea.
+    Introduce las citas que deseas incluir en la entrada. Cada cita deberá estar en una nueva línea.
     """
 )
 
