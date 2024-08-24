@@ -26,7 +26,7 @@ def generate_essay(citations):
     data = {
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
-        "max_tokens": 1024, # Aumentamos el número de tokens para obtener un ensayo largo
+        "max_tokens": 2024, # Aumentamos el número de tokens para obtener un ensayo largo
         "temperature": 0.7,
         "top_p": 0.7,
         "top_k": 50,
