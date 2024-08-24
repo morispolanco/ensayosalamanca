@@ -15,7 +15,7 @@ def generate_essay(citations):
 
     # Se crea la instrucción para el modelo
     instruction = (
-        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados. Incluye citas textuales, sin referencia."
+        "Redacta una entrada de enciclopedia utilizando las citas proporcionadas y compárala con las creencias de la Escuela austriaca de economía. Tu entrada debe proporcionar una explicación clara y concisa sobre los conceptos presentados en las citas, destacando las similitudes y diferencias con la perspectiva de la Escuela austriaca de economía. Además, debes asegurarte de que la comparación sea relevante y detallada, y que demuestre un entendimiento sólido de ambos enfoques económicos. Por favor, asegúrate de que tu respuesta sea informativa y precisa, y que fomente una comprensión profunda de los temas abordados. Incluye citas textuales, con referencia."
     )
 
     # Crear el mensaje para el modelo
@@ -26,7 +26,7 @@ def generate_essay(citations):
     data = {
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
-        "max_tokens": 3048,  # Incrementar el número de tokens para permitir una discusión más larga
+        "max_tokens": 2048,  # Incrementar el número de tokens para permitir una discusión más larga
         "temperature": 0.7,
         "top_p": 0.7,
         "top_k": 50,
@@ -75,10 +75,6 @@ if st.button("Generar entrada"):
                 st.session_state.essay = essay
     else:
         st.error("Por favor, introduce algunas citas.")
-
-if st.button("Borrar"):
-    st.session_state.citations_input = ""
-    st.session_state.essay = ""
 
 # Mostrar el ensayo generado, si está presente
 if st.session_state.essay:
