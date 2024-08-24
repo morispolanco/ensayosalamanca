@@ -27,10 +27,10 @@ def generate_essay(citations):
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "messages": messages,
         "max_tokens": 2048,  # Incrementar el número de tokens para permitir una discusión más larga
-        "temperature": 0.3,
+        "temperature": 0.5,
         "top_p": 0.7,
         "top_k": 50,
-        "repetition_penalty": 0.5,
+        "repetition_penalty": 1,
         "stop": ["[/INST]", "</s>"],
         "stream": False  # Cambiar a True si se desea transmisión en tiempo real
     }
