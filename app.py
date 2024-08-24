@@ -5,19 +5,27 @@ import requests
 api_key = st.secrets["together_ai_key"]
 
 # Definir la URL del endpoint de la API de Together
-url = "https://api.together.xyz/v1/generate"
+url = "https://api.together.xyz/v1/chat/completions"
 
 def generate_essay(citations):
     headers = {
         "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
     }
+    messages = [{"role": "system", "content": "You are a helpful assistant that writes academic essays based on provided citations."}]
+    for citation in citations:
+        messages.append({"role": "user", "content": citation})
+
     data = {
         "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-        "input": {
-            "format": "essay",
-            "citations": citations,
-        }
+        "messages": messages,
+        "max_tokens": 512,
+        "temperature": 0.7,
+        "top_p": 0.7,
+        "top_k": 50,
+        "repetition_penalty": 1,
+        "stop": ["[/INST]", "</s>"],
+        "stream": False  # Cambiar a True si se desea transmisión en tiempo real
     }
 
     response = requests.post(url, headers=headers, json=data)
@@ -26,13 +34,15 @@ def generate_essay(citations):
     try:
         response_json = response.json()
     except requests.exceptions.JSONDecodeError:
-        return f"Error: Respuesta no válida. Código de estado: {response.status_code}. Contenido: {response.text}"
+        st.error(f"Error: Respuesta no válida. Código de estado: {response.status_code}. Contenido: {response.text}")
+        return
 
     # Verifica el código de estado HTTP
     if response.status_code == 200:
-        return response_json.get("output", "No se encontró contenido en la respuesta.")
+        return response_json.get("choices", [{}])[0].get("message", {}).get("content", "No se encontró contenido en la respuesta.")
     else:
-        return f"Error: {response_json.get('error', 'Unknown error')}"
+        st.error(f"Error: {response_json.get('error', 'Unknown error')}")
+        return
 
 st.title("Generador de Ensayo Académico")
 st.write(
@@ -47,7 +57,8 @@ if st.button("Generar Ensayo"):
     if citations:
         with st.spinner("Generando ensayo..."):
             essay = generate_essay(citations)
-            st.subheader("Ensayo Generado")
-            st.write(essay)
+            if essay:
+                st.subheader("Ensayo Generado")
+                st.write(essay)
     else:
         st.error("Por favor, introduce algunas citas.")
